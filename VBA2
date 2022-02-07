@@ -1,0 +1,98 @@
+Option Explicit
+
+Function MaksimumZ2Liczb(A As Double, B As Double) As Double
+    If A >= B Then
+        MaksimumZ2Liczb = A
+    Else
+        MaksimumZ2Liczb = B
+    End If
+End Function
+
+Function MaksimumZ3Liczb(A As Double, B As Double, C As Double) As Double
+    If A >= B And A >= C Then
+        MaksimumZ3Liczb = A
+    ElseIf B >= A And B >= C Then
+        MaksimumZ3Liczb = B
+    Else
+        MaksimumZ3Liczb = C
+    End If
+End Function
+
+Sub ZadaniePolaKola()
+    Dim Promien As Double
+    Dim Pole As Double
+    Pole = PoleKola(Promien)
+    
+    Promien = InputBox("Podaj promień koła", "Obliczanie pola koła")
+    If Promien > 0 Then
+        MsgBox "Pole koła wynosi " & PoleKola(Promien) & " ", vbInformation + vbOKOnly, "Pole Koła"
+    Else
+        MsgBox "Podano błędny promień", vbCritical + vbOKOnly, "Pole Koła"
+    End If
+End Sub
+
+Function CzyLiczbaWiekszaOdZera(A As Long) As Boolean
+    If A > 0 Then
+        CzyLiczbaWiekszaOdZera = True
+    Else
+        CzyLiczbaWiekszaOdZera = False
+    End If
+End Function
+
+Function CzyLiczbaJednocyfrowa(A As Long) As Boolean
+    If A < 10 And A > -10 Then
+        CzyLiczbaJednocyfrowa = True
+    Else
+        CzyLiczbaJednocyfrowa = False
+    End If
+End Function
+
+Function CzyLiczbaParzysta(A As Long) As Boolean
+    If A Mod 2 = 0 Then
+        CzyLiczbaParzysta = True
+    Else
+        CzyLiczbaParzysta = False
+    End If
+End Function
+
+Function CzyLiczbaPodzielnaPrzez17(A As Long) As Boolean
+    If A Mod 17 = 0 Then
+        CzyLiczbaPodzielnaPrzez17 = True
+    Else
+        CzyLiczbaPodzielnaPrzez17 = False
+    End If
+End Function
+
+Function CzyLiczbaJestCalkowita(A As Double) As Boolean
+    If A \ 1 = A Then
+        CzyLiczbaJestCalkowita = True
+    Else
+        CzyLiczbaJestCalkowita = False
+    End If
+End Function
+
+Sub JakasWartosc()
+    Dim Wartosc As Variant
+    
+    Wartosc = InputBox("Podaj liczbę, datę lub tekst", "Wartość")
+    
+    If IsNumeric(Wartosc) = True Then
+        MsgBox "Podano liczbę", vbInformation + vbOKOnly, "Liczba"
+    ElseIf IsDate(Wartosc) = True Then
+        MsgBox "Podano datę", vbInformation + vbOKOnly, "Data"
+    Else
+        MsgBox "Podano tekst", vbInformation + vbOKOnly, "Tekst"
+    End If
+End Sub
+
+Function Zadanie32(A As Double) As String
+    If A = 1 Then
+        Zadanie32 = " " & A & " złoty "
+    ElseIf A Mod 100 = 12 Or A Mod 100 = 13 Or A Mod 100 = 14 Then
+        Zadanie32 = " " & A & " złotych "
+    ElseIf A Mod 10 = 2 Or A Mod 10 = 3 Or A Mod 10 = 4 Then
+        Zadanie32 = " " & A & " złote "
+    Else
+        Zadanie32 = " " & A & " złotych "
+    End If
+End Function
