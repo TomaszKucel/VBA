@@ -1,0 +1,107 @@
+Option Explicit
+
+Function ObliczanieLogarytmu(A As Double, B As Double) As Variant
+    If A > 0 And A <> 1 And B > 0 Then
+        ObliczanieLogarytmu = Log(B) / Log(A)
+    Else
+        ObliczanieLogarytmu = "Podano dane sprzeczne z dziedziną"
+    End If
+    
+End Function
+
+
+Function ObliczanieKotangesa(X As Double) As Variant
+    If Sin(X) <> 0 Then
+        ObliczanieKotangesa = Cos(X) / Sin(X)
+    Else
+        ObliczanieKotangesa = "Podano dane sprzeczne z dziedziną"
+    End If
+    
+End Function
+
+Function ObliczanieSinusaHiper(X As Double) As Double
+    ObliczanieSinusaHiper = (Exp(X) - Exp(-X)) / 2
+End Function
+
+
+Function CzyLiczbaJestPierwsza(Liczba As Long) As Boolean
+    If LiczbaNaturalnychDzielnikow(Liczba) = 2 Then
+        CzyLiczbaJestPierwsza = True
+    Else
+        CzyLiczbaJestPierwsza = False
+    End If
+    
+End Function
+
+Sub Zad52()
+    Dim Liczba As Long
+    
+    Liczba = Rnd() * 998 + 2
+    MsgBox Liczba, vbInformation + vbOKOnly, "Wylosowana liczba"
+    If CzyLiczbaJestPierwsza(Liczba) = True Then
+        MsgBox "Wylosowana liczba jest liczbą pierwszą", vbInformation + vbOKOnly, "Liczby Pierwsze"
+    Else
+        MsgBox "Wylosowana liczba nie jest liczbą pierwszą", vbInformation + vbOKOnly, "Liczby Pierwsze"
+    End If
+        
+End Sub
+
+
+Function ZwracanieZnaku(Lancuch As String, KtoreMiejsce As Byte) As String
+
+    ZwracanieZnaku = Mid(Lancuch, KtoreMiejsce, 1)
+
+End Function
+
+
+Function ZwracanieZnaku2(Lancuch As String, KtoreMiejsce As Byte) As String
+    
+    ZwracanieZnaku2 = Mid(Lancuch, Len(Lancuch) - KtoreMiejsce + 1, 1)
+End Function
+
+
+Function ZwracanieLancucha(Lancuch As String, OdKtoregoMiejsca, DoKtoregoMiejsca) As String
+    
+    ZwracanieLancucha = Mid(Lancuch, OdKtoregoMiejsca, DoKtoregoMiejsca - OdKtoregoMiejsca + 1)
+End Function
+
+
+
+Sub SprawdzanieFunkcji()
+    Dim Lancuch As String
+    Dim KtoreMiejsce As Byte
+    Dim DoKtoregoMiejsca As Byte
+    Dim OdKtoregoMiejsca As Byte
+    
+    Lancuch = InputBox("Podaj treść łańcucha")
+    
+    KtoreMiejsce = InputBox("Z jakiego miejsca, chcesz uzyskać znak?")
+    MsgBox ZwracanieZnaku(Lancuch, KtoreMiejsce)
+    
+    KtoreMiejsce = InputBox("Z którego miejsca od końca, chcesz uzyskać znak?")
+    MsgBox ZwracanieZnaku2(Lancuch, KtoreMiejsce)
+    
+    OdKtoregoMiejsca = InputBox("Od którego miejsca chcesz otrzymać nowy łańcuch")
+    DoKtoregoMiejsca = InputBox("Do którego miejsca, łańcuch ma się zakończyć")
+    MsgBox ZwracanieLancucha(Lancuch, OdKtoregoMiejsca, DoKtoregoMiejsca)
+    
+End Sub
+
+
+Function Sprawdzanie(LancuchA As String, LancuchB As String) As Boolean
+    If Left(LancuchA, Len(LancuchB)) = LancuchB Then
+        Sprawdzanie = True
+    Else
+        Sprawdzanie = False
+    End If
+    
+End Function
+
+Function Sprawdzanie2(LancuchA As String, LancuchB As String) As Boolean
+    If Right(LancuchA, Len(LancuchB)) = LancuchB Then
+        Sprawdzanie2 = True
+    Else
+        Sprawdzanie2 = False
+    End If
+    
+End Function
